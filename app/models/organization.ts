@@ -5,14 +5,20 @@ export default class Organization {
         name: string;
     }) {
         const result = await sql`
-            insert into
-            organizations (name)
-            values
-            (${name})
+            insert into organizations
+            ${sql({ name })}
             returning *
         `;
 
         return result[0];
+    }
+
+    static async getAll() {
+        const result = await sql`
+            select * from organizations
+        `;
+
+        return result;
     }
 
     static async get(organizationId: string) {
@@ -30,9 +36,8 @@ export default class Organization {
         role: "owner" | "member";
     }) {
         const result = await sql`
-            insert into
-            organization_users (organization_id, user_id, role)
-            values (${organizationId}, ${userId}, ${role})
+            insert into organization_users
+            ${sql({ organizationId, userId, role })}
             returning *
         `;
 
@@ -67,8 +72,7 @@ export default class Organization {
     }) {
         const result = await sql`
             update organizations
-            set
-            name = ${name}
+            set ${sql({ name })}
             where organization_id = ${organizationId}
             returning *
         `;

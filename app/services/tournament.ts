@@ -23,6 +23,10 @@ export default class TournamentService {
         });
     }
 
+    static async getAll() {
+        return await Tournament.getAll();
+    }
+
     static async get(tournamentId: string) {
         return await Tournament.get(tournamentId);
     }

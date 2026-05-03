@@ -10,12 +10,16 @@ export default class OrganizationService {
         });
 
         await Organization.addUser({
-            organizationId: organization.organizationId;
+            organizationId: organization.organizationId,
             userId,
             role: "owner"
         });
 
         return organization;
+    }
+
+    static async getAll() {
+        return await Organization.getAll();
     }
 
     static async get(organizationId: string) {
@@ -75,7 +79,7 @@ export default class OrganizationService {
         organizationId: string;
     }) {
         const organizationUser = await Organization.getUser({
-            organizationId: organizationId,
+            organizationId,
             userId
         });
 

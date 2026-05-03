@@ -11,7 +11,7 @@ export default class UserService {
         email: string;
         password: string;
     }) {
-        if (!await User.getByEmail(email)) {
+        if (await User.getByEmail(email)) {
             return;
         }
 
@@ -32,7 +32,7 @@ export default class UserService {
             return;
         }
 
-        if (await bcrypt.compare(password, user.passwordHash)) {
+        if (!await bcrypt.compare(password, user.passwordHash)) {
             return;
         }
 
@@ -49,5 +49,20 @@ export default class UserService {
             jwtToken,
             user,
         };
+    }
+
+    static async get(userId: string) {
+        const user = await User.get(userId);
+
+        return user;
+    }
+
+    static async validate(jwtToken: string) {
+        try {
+            jwt.verify(jwtToken, process.env.JWT_SECRET as string);
+            return true;
+        } catch {
+            return false;
+        }
     }
 }

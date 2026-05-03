@@ -9,14 +9,20 @@ export default class Tournament {
         startTime: string;
     }) {
         const result = await sql`
-            insert into
-            tournaments (organization_id, name, tab_link, visibility, start_time)
-            values
-            (${organizationId}, ${name}, ${tabLink}, ${visibility}, ${startTime})
+            insert into tournaments            
+            ${sql({ organizationId, name, tabLink, visibility, startTime })}
             returning *
         `;
 
         return result[0];
+    }
+
+    static async getAll() {
+        const result = await sql`
+            select * from tournaments
+        `;
+
+        return result;
     }
 
     static async get(tournamentId: string) {
@@ -34,9 +40,8 @@ export default class Tournament {
         role: "convenor" | "tabulator" | "chief adjudicator" | "debater" | "adjudicator";
     }) {
         const result = await sql`
-            insert into
-            tournament_users (tournament_id, user_id, role)
-            values (${tournamentId}, ${userId}, ${role})
+            insert into tournament_users
+            ${sql({ tournamentId, userId, role })}
             returning *
         `;
 
@@ -75,12 +80,7 @@ export default class Tournament {
     }) {
         const result = await sql`
             update tournaments
-            set
-            organization_id = ${organizationId},
-            name = ${name},
-            tab_link = ${tabLink},
-            visibility = ${visibility},
-            start_time = ${startTime},
+            set ${sql({ organizationId, name, tabLink, visibility, startTime })}
             where tournament_id = ${tournamentId}
             returning *
         `;

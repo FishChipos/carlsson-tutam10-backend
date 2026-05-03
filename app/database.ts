@@ -3,7 +3,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-const sql = postgres(process.env.POSTGRES_URL as string);
+const sql = postgres(process.env.POSTGRES_URL as string, {
+    transform: postgres.camel
+});
 
 export async function seed() {
     try {

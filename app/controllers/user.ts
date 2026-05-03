@@ -69,4 +69,55 @@ export default class UserController {
             next(err);
         }
     }
+
+    static async get(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { userId } = req.params;
+
+            const user = await UserService.get(userId as string);
+
+            if (!user) {
+                res.status(404).json({
+                    success: false,
+                    message: "User get failed! (User not found)",
+                    payload: null,
+                });
+                return;
+            }
+
+            res.status(200).json({
+                success: true,
+                message: "User get successful.",
+                payload: user,
+            });
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    static async validate(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { jwtToken } = req.body;
+            
+            const valid = await UserService.validate(jwtToken);
+
+            if (valid) {
+                res.status(200).json({
+                    success: true,
+                    message: "User auth validation successful.",
+                    payload: null,
+                })
+                return;
+            } else {
+                res.status(200).json({
+                    success: false,
+                    message: "User auth validation failed!",
+                    payload: null,
+                })
+                return;
+            }
+        } catch (err) {
+            next(err);
+        }
+    }
 }

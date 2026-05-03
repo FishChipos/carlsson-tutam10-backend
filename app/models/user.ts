@@ -7,10 +7,8 @@ export default class User {
         passwordHash: string;
     }) {
         const result = await sql`
-            insert into 
-            users (name, email, password_hash) 
-            values
-            (${name}, ${email}, ${passwordHash})
+            insert into users
+            ${sql({ name, email, passwordHash })}
             returning *
         `;
 
@@ -52,18 +50,15 @@ export default class User {
         return result[0];
     }
 
-    static async update({ userId, name, email, password }: {
+    static async update({ userId, name, email, passwordHash }: {
         userId: string;
         name: string;
         email: string;
-        password: string;
+        passwordHash: string;
     }) {
         const result = await sql`
             update users
-            set
-            name = ${name},
-            email = ${email},
-            password = ${password}
+            set ${sql({ name, email, passwordHash })}
             where user_id = ${userId}
         `;
 
