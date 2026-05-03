@@ -1,12 +1,6 @@
 {
-    "include": [
-        "**/*"
-    ],
     "compilerOptions": {
         "allowImportingTsExtensions": true,
-        "verbatimModuleSyntax": true,
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "strict": true
+        "verbatimModuleSyntax": true
     }
 }
