@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
-import { seed } from "./database";
+import { seed } from "./database/database";
 import userRoutes from "./routes/user";
 import tournamentRoutes from "./routes/tournament";
 import organizationRoutes from "./routes/organization";

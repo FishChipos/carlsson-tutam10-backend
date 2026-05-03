@@ -1,4 +1,4 @@
-import sql from "../database";
+import sql from "../database/database";
 
 export default class Organization {
     static async create({ name }: {
