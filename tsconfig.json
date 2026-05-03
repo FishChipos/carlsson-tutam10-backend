@@ -1,0 +1,14 @@
+{
+    "include": [
+        "**/*"
+    ],
+    "compilerOptions": {
+        "allowImportingTsExtensions": true,
+        "esModuleInterop": true,
+        "verbatimModuleSyntax": true,
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true
+    }
+}
