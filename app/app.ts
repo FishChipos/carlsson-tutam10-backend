@@ -3,10 +3,10 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
-import { seed } from "./database.ts";
-import userRoutes from "./routes/user.ts";
-import tournamentRoutes from "./routes/tournament.ts";
-import organizationRoutes from "./routes/organization.ts";
+import { seed } from "./database";
+import userRoutes from "./routes/user";
+import tournamentRoutes from "./routes/tournament";
+import organizationRoutes from "./routes/organization";
 
 await seed();
 

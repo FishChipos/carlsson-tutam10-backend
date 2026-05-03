@@ -1,4 +1,4 @@
-import Organization from "../models/organization.ts";
+import Organization from "../models/organization";
 
 export default class OrganizationService {
     static async create({ userId, name }: {

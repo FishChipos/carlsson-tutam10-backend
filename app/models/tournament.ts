@@ -1,4 +1,4 @@
-import sql from "../database.ts";
+import sql from "../database";
 
 export default class Tournament {
     static async create({ organizationId, name, tabLink, visibility, startTime }: {
@@ -9,7 +9,7 @@ export default class Tournament {
         startTime: string;
     }) {
         const result = await sql`
-            insert into tournaments            
+            insert into tourname            
             ${sql({ organizationId, name, tabLink, visibility, startTime })}
             returning *
         `;
@@ -19,7 +19,7 @@ export default class Tournament {
 
     static async getAll() {
         const result = await sql`
-            select * from tournaments
+            select * from tourname
         `;
 
         return result;
@@ -27,7 +27,7 @@ export default class Tournament {
 
     static async get(tournamentId: string) {
         const result = await sql`
-            select * from tournaments
+            select * from tourname
             where tournament_id = ${tournamentId}
         `;
 
@@ -79,7 +79,7 @@ export default class Tournament {
         startTime: string;
     }) {
         const result = await sql`
-            update tournaments
+            update tourname
             set ${sql({ organizationId, name, tabLink, visibility, startTime })}
             where tournament_id = ${tournamentId}
             returning *
@@ -90,7 +90,7 @@ export default class Tournament {
 
     static async delete(tournamentId: string) {
         await sql`
-            delete from tournaments
+            delete from tourname
             where tournament_id = ${tournamentId}
         `
     }

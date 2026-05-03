@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import User from "../models/user.ts";
+import User from "../models/user";
 
 const SALT_ROUNDS = 10;
 

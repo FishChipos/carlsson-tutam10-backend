@@ -1,7 +1,7 @@
-import Organization from "../models/organization.ts";
-import Tournament from "../models/tournament.ts";
+import Organization from "../models/organization";
+import Tournament from "../models/tournament";
 
-export default class TournamentService {
+export default class Tournameervice {
     static async create({ userId, organizationId, name, tabLink, visibility, startTime }: {
         userId: string;
         organizationId: string;

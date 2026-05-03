@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import TournamentController from "../controllers/tournament.ts";
+import TournamentController from "../controllers/tournament";
 
 const routes = Router();
 

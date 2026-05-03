@@ -1,4 +1,4 @@
-import sql from "../database.ts";
+import sql from "../database";
 
 export default class User {
     static async create({ name, email, passwordHash }: {

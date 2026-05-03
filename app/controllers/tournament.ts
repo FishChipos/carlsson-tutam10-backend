@@ -1,14 +1,14 @@
 import type { Request, Response, NextFunction } from "express";
-import TournamentService from "../services/tournament.ts";
+import TournamentService from "../services/tournament";
 
 export default class TournamentController {
     static async getAll(req: Request, res: Response, next: NextFunction) {
-        const tournaments = await TournamentService.getAll();
+        const tourname = await TournamentService.getAll();
 
         res.status(200).json({
             success: true,
             message: "Tournament get all successful.",
-            payload: tournaments,
+            payload: tourname,
         })
     }
 }

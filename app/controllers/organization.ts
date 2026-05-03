@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import OrganizationService from "../services/organization.ts";
+import OrganizationService from "../services/organization";
 
 export default class OrganizationController {
     static async getAll(req: Request, res: Response, next: NextFunction) {
