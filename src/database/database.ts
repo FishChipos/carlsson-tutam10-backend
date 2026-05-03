@@ -3,7 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-const sql = postgres(process.env.POSTGRES_URL as string, {
+export const sql = postgres(process.env.POSTGRES_URL as string, {
     transform: postgres.camel
 });
 
@@ -18,5 +18,3 @@ export async function seed() {
         console.error("Error running seed: ", err);
     }
 }
-
-export default sql;

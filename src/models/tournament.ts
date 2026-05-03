@@ -1,4 +1,4 @@
-import sql from "../database/database";
+import { sql } from "../database/database";
 
 export default class Tournament {
     static async create({ organizationId, name, tabLink, visibility, startTime }: {
