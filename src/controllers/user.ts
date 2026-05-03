@@ -1,6 +1,6 @@
 import { type Request, type Response, type NextFunction } from "express";
 
-import UserService from "../services/user";
+import UserService from "../services/user.js";
 
 export default class UserController {
     static async register(req: Request, res: Response, next: NextFunction) {

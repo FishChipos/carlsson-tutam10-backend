@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import OrganizationController from "../controllers/organization";
+import OrganizationController from "../controllers/organization.js";
 
 const routes = Router();
 

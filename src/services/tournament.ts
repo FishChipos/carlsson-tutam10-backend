@@ -1,5 +1,5 @@
-import Organization from "../models/organization";
-import Tournament from "../models/tournament";
+import Organization from "../models/organization.js";
+import Tournament from "../models/tournament.js";
 
 export default class Tournameervice {
     static async create({ userId, organizationId, name, tabLink, visibility, startTime }: {

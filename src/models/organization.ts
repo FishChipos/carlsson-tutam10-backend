@@ -1,4 +1,4 @@
-import { sql } from "../database/database";
+import { sql } from "../database/database.js";
 
 export default class Organization {
     static async create({ name }: {

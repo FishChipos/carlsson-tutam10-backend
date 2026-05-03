@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import TournamentService from "../services/tournament";
+import TournamentService from "../services/tournament.js";
 
 export default class TournamentController {
     static async getAll(req: Request, res: Response, next: NextFunction) {
