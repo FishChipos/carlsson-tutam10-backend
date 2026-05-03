@@ -9,7 +9,7 @@ export default class Tournament {
         startTime: string;
     }) {
         const result = await sql`
-            insert into tourname            
+            insert into tournament   
             ${sql({ organizationId, name, tabLink, visibility, startTime })}
             returning *
         `;
@@ -19,7 +19,7 @@ export default class Tournament {
 
     static async getAll() {
         const result = await sql`
-            select * from tourname
+            select * from tournament
         `;
 
         return result;
@@ -27,7 +27,7 @@ export default class Tournament {
 
     static async get(tournamentId: string) {
         const result = await sql`
-            select * from tourname
+            select * from tournament
             where tournament_id = ${tournamentId}
         `;
 
@@ -79,7 +79,7 @@ export default class Tournament {
         startTime: string;
     }) {
         const result = await sql`
-            update tourname
+            update tournament
             set ${sql({ organizationId, name, tabLink, visibility, startTime })}
             where tournament_id = ${tournamentId}
             returning *
@@ -90,7 +90,7 @@ export default class Tournament {
 
     static async delete(tournamentId: string) {
         await sql`
-            delete from tourname
+            delete from tournament
             where tournament_id = ${tournamentId}
         `
     }
